@@ -72,11 +72,11 @@ function game() {
         }
     }
     if (win > lose) {
-        return "You Win!";
+        return "Finally - You Win!";
     } else if (lose > win) {
-        return "Computer Won!";
+        return "Finally - Computer Won!";
     } else {
-        return "Draw!";
+        return "Finally - Draw!";
     }
 }
 console.log(game());
