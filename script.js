@@ -18,6 +18,7 @@ function playRound(playerSelection, computerSelection) {
     var result = '';
     player = 0;
     comp = 0;
+    const output = document.querySelector("#output");
     if (playerSelection != computerSelection) {
         if (playerSelection == "rock" && computerSelection == "scissor") {
             //console.log("You Win!");
@@ -49,6 +50,7 @@ function playRound(playerSelection, computerSelection) {
             result = "You Win!";
             player++;
         }
+
     }
     else {
         //console.log("Draw");
@@ -57,26 +59,42 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-var num = prompt("Enter a number");
-win = 0
+// var num = prompt("Enter a number");
+win = 0;
 lose = 0;
 function game() {
-    for (i = 0; i < num; i++) {
-        const playerSelection = "rock";
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection.toLowerCase(), computerSelection.toLowerCase()));
-        if (player) {
-            win = win + 1;
-        } else if (comp) {
-            lose = lose + 1;
+    // for (i = 0; i < num; i++) {
+    const opt = document.getElementById('rock');
+    const playerSelection = opt.id;
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection.toLowerCase(), computerSelection.toLowerCase()));
+    if (player) {
+        win = win + 1;
+        if (win == 5) {
+            output.textContent = "You Won the Game! Congrats";
+            win = 0;
+            lose = 0;
+            return console.log("Player wins");
+        }
+    } else if (comp) {
+        lose = lose + 1;
+        if (lose == 5) {
+            output.textContent = "You Lost the Game! Better Luck Next Time.";
+            win = 0;
+            lose = 0;
+            return console.log("Computer wins")
         }
     }
-    if (win > lose) {
-        return "Finally - You Win!";
-    } else if (lose > win) {
-        return "Finally - Computer Won!";
-    } else {
-        return "Finally - Draw!";
-    }
+    // }
+    // if (win > lose) {
+    //     return "Finally - You Win!";
+    // } else if (lose > win) {
+    //     return "Finally - Computer Won!";
+    // } else {
+    //     return "Finally - Draw!";
+    // }
 }
-console.log(game());
+
+function clickfunc() {
+    return console.log(game());
+};
